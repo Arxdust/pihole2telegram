@@ -18,7 +18,7 @@ Create Telegram bot [BotFather](t.me/botfather). (If you are not familiar with t
 
 Or clone this repo
 ```bash
-git clone  requirements.txt
+git clone https://github.com/Arxdust/pihole2telegram.git
 ```
 ###### Install requirements:
 
