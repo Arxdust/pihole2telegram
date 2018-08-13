@@ -50,7 +50,7 @@ URL = 'http://192.168.88.253/admin/api.php'
 WEBPASSWORD = '6e63f2XXX2aadeXXXXcc579eaada89110a8a3aXXXcXXXd1ad99ddXX'
 ```
 
-Start:python3 pihole2telegram.py
+run: pihole2telegram.py
 
 #### Bot tested:
 - Ubuntu 16.0.5
