@@ -53,7 +53,7 @@ WEBPASSWORD = '6e63f2XXX2aadeXXXXcc579eaada89110a8a3aXXXcXXXd1ad99ddXX'
 Start:python3 pihole2telegram.py
 
 #### Bot tested:
-- Ubuntu 16.0.4 (Server), Ubuntu 16.0.5
+- Ubuntu 16.0.5
 
 - Pi-hole v3.3 & 4.0
 
