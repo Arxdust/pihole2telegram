@@ -4,8 +4,6 @@
 
 Official site Pi-hole: https://pi-hole.net/
 
-GitHub project Pi-hole
-
 Create Telegram bot [BotFather](t.me/botfather). (If you are not familiar with telegram bots and chat read the [docs](https://core.telegram.org/bots)).
 
 ###### Just download:
