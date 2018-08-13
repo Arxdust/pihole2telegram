@@ -1,4 +1,4 @@
-# pihole2Telegram
+# Pihole2Telegram
 
 ## Simple Telegram bot for Pi-hole
 
