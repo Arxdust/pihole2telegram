@@ -1,7 +1,6 @@
 import config
 from telegram.ext import CommandHandler
 from telegram.ext import Updater, CallbackQueryHandler
-# from telegram.ext import MessageHandler, Filters
 from telegram import ChatAction
 from parse import genstats, top_it, check_status
 import time
@@ -50,88 +49,89 @@ def myid(bot, update):
 
 
 def pihole(bot, update):
-    bot.sendMessage(chat_id=update.message.chat_id, text='Pi-hole 🌀', reply_markup=reply_markup)
+    user = str(update.message.from_user.id)
+    if user in config.admin:
+        bot.sendMessage(chat_id=update.message.chat_id, text=genstats(), reply_markup=reply_markup, parse_mode='Markdown')
 
 
 def button(bot, update):
-    query = update.callback_query
+        query = update.callback_query
+        if query.data == '1':
+            bot.editMessageText(text=genstats(),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup,
+                                parse_mode='Markdown')
 
-    if query.data == '1':
-        bot.editMessageText(text=genstats(),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup,
-                            parse_mode='Markdown')
+        if query.data == '2':
+            bot.editMessageText(text='Please choose:',
+                                reply_markup=reply_markup2,
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                )
 
-    if query.data == '2':
-        bot.editMessageText(text='Please choose:',
-                            reply_markup=reply_markup2,
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            )
+        if query.data == '4':
+            bot.editMessageText(text=top_it('topClients'),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup2,
+                                parse_mode='Markdown'
 
-    if query.data == '4':
-        bot.editMessageText(text=top_it('topClients'),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup2,
-                            parse_mode='Markdown'
+                                )
 
-                            )
+        if query.data == '5':
+            bot.editMessageText(text=top_it('topItems', 1),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup2,
+                                parse_mode='Markdown'
+                                )
 
-    if query.data == '5':
-        bot.editMessageText(text=top_it('topItems', 1),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup2,
-                            parse_mode='Markdown'
-                            )
+        if query.data == '6':
+            bot.editMessageText(text=top_it('topItems', 2),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup2,
+                                parse_mode='Markdown'
+                                )
 
-    if query.data == '6':
-        bot.editMessageText(text=top_it('topItems', 2),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup2,
-                            parse_mode='Markdown'
-                            )
+        if query.data == '3':
+            bot.editMessageText(text='Please choose:',
+                                reply_markup=reply_markup3,
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id
+                                )
 
-    if query.data == '3':
-        bot.editMessageText(text='Please choose:',
-                            reply_markup=reply_markup3,
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id
-                            )
+        if query.data == '7':
+            bot.editMessageText(text=check_status('status'),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup3,
+                                parse_mode='Markdown'
+                                )
 
-    if query.data == '7':
-        bot.editMessageText(text=check_status('status'),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup3,
-                            parse_mode='Markdown'
-                            )
+        if query.data == '8':
+            bot.editMessageText(text=check_status('enable'),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup3,
+                                parse_mode='Markdown'
+                                )
 
-    if query.data == '8':
-        bot.editMessageText(text=check_status('enable'),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup3,
-                            parse_mode='Markdown'
-                            )
+        if query.data == '9':
+            bot.editMessageText(text=check_status('disable'),
+                                chat_id=query.message.chat_id,
+                                message_id=query.message.message_id,
+                                reply_markup=reply_markup3,
+                                parse_mode='Markdown'
+                                )
 
-    if query.data == '9':
-        bot.editMessageText(text=check_status('disable'),
-                            chat_id=query.message.chat_id,
-                            message_id=query.message.message_id,
-                            reply_markup=reply_markup3,
-                            parse_mode='Markdown'
-                            )
-
-    if query.data == '10':
-        bot.editMessageText(text = 'Pi-hole 🌀',
-                            chat_id = query.message.chat_id,
-                            message_id = query.message.message_id,
-                            reply_markup = reply_markup,
-                            parse_mode = 'Markdown')
+        if query.data == '10':
+            bot.editMessageText(text = genstats(),
+                                chat_id = query.message.chat_id,
+                                message_id = query.message.message_id,
+                                reply_markup = reply_markup,
+                                parse_mode = 'Markdown')
 
 
 start_handler = CommandHandler('start', start)
