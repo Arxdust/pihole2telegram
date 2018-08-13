@@ -1,11 +1,10 @@
-# Pihole2Telegram
+# pihole2Telegram
 
-## Simple Telegram bot for Pihole
+## Simple Telegram bot for Pi-hole
 
-Official site: https://pi-hole.net/
+Official site Pi-hole: https://pi-hole.net/
 
-GitHub project: https://pi-hole.net/
-### Installation
+GitHub project Pi-hole
 
 Create Telegram bot [BotFather](t.me/botfather). (If you are not familiar with telegram bots and chat read the [docs](https://core.telegram.org/bots)).
 
